@@ -1,0 +1,98 @@
+/* Background styling */
+body {
+    background: url('../static/background.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Main container styling */
+.game-container {
+    text-align: center;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 12px;
+    max-width: 800px; /* Expanded width to 2/3 of the screen */
+    width: 66vw; /* Set to approximately 2/3 of the viewport width */
+}
+
+/* Question styling */
+.question {
+    font-size: 2.2rem; /* Increased font size */
+    margin-bottom: 25px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Flag image styling */
+.flag-image {
+    width: 45vw; /* Scaled up to fit the larger container */
+    max-width: 250px;
+    margin-bottom: 30px;
+}
+
+/* Feedback text styling */
+.feedback-text {
+    font-size: 1.6rem; /* Increased font size */
+    font-family: 'Georgia', serif;
+    color: #333;
+    margin: 20px 0;
+}
+
+/* Options container styling for horizontal alignment */
+.options {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+/* Option button styling */
+.option-button {
+    padding: 12px 18px; /* Increased padding */
+    font-size: 1.2rem; /* Increased font size */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    font-family: 'Verdana', sans-serif;
+    background-color: #f0f0f0;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.option-button:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.05);
+}
+
+/* Feedback colors */
+.option-button.correct {
+    background-color: #28a745;
+    color: white;
+}
+
+.option-button.incorrect {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Next button styling */
+#next-button {
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-family: 'Verdana', sans-serif;
+    transition: background-color 0.3s;
+}
+
+#next-button:hover {
+    background-color: #0056b3;
+}
