@@ -28,6 +28,18 @@ flags = {
     "chile.png": "Chile",
     "china.png": "China",
     "colombia.png": "Colombia",
+    "costarica.png": "Costa Rica",
+    "croatia.png": "Croatia",
+    "cuba.png": "Cuba",
+    "cyprus.png": "Cyprus",
+    "czechrep.png": "Czech Republic",
+    "denmark.png": "Denmark",
+    "dominica,png": "Dominica",
+    "dominicanrep.png": "Dominican Republic",
+    "ecuador.png": "Ecuador",
+    "egypt.png": "Egypt",
+    "estonia.png": "Estonia",
+    "finland.png": "Finland",
 }
 
 # Route to serve the main HTML file
