@@ -34,7 +34,7 @@ flags = {
     "cyprus.png": "Cyprus",
     "czechrep.png": "Czech Republic",
     "denmark.png": "Denmark",
-    "dominica,png": "Dominica",
+    "dominica.png": "Dominica",
     "dominicanrep.png": "Dominican Republic",
     "ecuador.png": "Ecuador",
     "egypt.png": "Egypt",

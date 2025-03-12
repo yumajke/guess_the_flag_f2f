@@ -1,24 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guess the Flag</title>
-    <link rel="stylesheet" href="../static/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guess the Flag</title>
+  <link rel="stylesheet" href="static/styles.css" />
 </head>
 <body>
+  <!-- Lobby -->
+  <div id="lobby">
+    <h1>Welcome to "Guess the Flag"!</h1>
+    <button id="start-button" class="menu-button" onclick="startGame()">Start Game</button>
+    <button id="settings-button" class="menu-button" onclick="showSettings()">Settings</button>
+    <button id="leaderboard-button" class="menu-button" onclick="showLeaderboard()">Leaderboard</button>
+  </div>
+
+  <!-- Game Session -->
+  <div id="game" style="display: none;">
     <div class="game-container">
-        <h1 class="question">What country is this flag?</h1>
-        <img id="flag" src="" alt="flag" class="flag-image">
-        <div id="feedback" class="feedback-text"></div>
-        <div class="options">
-            <button class="option-button" onclick="selectOption(0)">Option 1</button>
-            <button class="option-button" onclick="selectOption(1)">Option 2</button>
-            <button class="option-button" onclick="selectOption(2)">Option 3</button>
-            <button class="option-button" onclick="selectOption(3)">Option 4</button>
-        </div>
-        <button id="next-button" style="display: none;" onclick="nextFlag()">Next</button>
+      <h1 class="question">Which country does this flag belong to?</h1>
+      <img id="flag" src="" alt="Flag" class="flag-image" />
+      <div id="feedback" class="feedback-text"></div>
+      <div class="options">
+        <button class="option-button"></button>
+        <button class="option-button"></button>
+        <button class="option-button"></button>
+        <button class="option-button"></button>
+      </div>
+      <button id="next-button" onclick="nextFlag()">Next</button>
+      <!-- Счётчик для правильной серии (Streak) -->
+      <div id="score-counter">Streak: 0</div>
     </div>
-    <script src="../static/script.js"></script>
+    <!-- End Game Button fixed at the bottom left corner -->
+    <button id="end-game-button" class="menu-button" onclick="endGame()">End Game</button>
+  </div>
+
+  <!-- Settings Page -->
+  <div id="settings" style="display: none;">
+    <div class="page-container">
+      <h1>Game Settings</h1>
+      <!-- Здесь можно добавить настройки игры -->
+      <p>Something will eventually appear here soon...</p>
+      <button class="menu-button" onclick="backToLobby()">Back</button>
+    </div>
+  </div>
+
+  <!-- Leaderboard Page -->
+<div id="leaderboard" style="display: none;">
+  <div class="page-container">
+    <h1>Leaderboard</h1>
+    <!-- Элемент для отображения лучшего счёта -->
+    <p id="leaderboard-content"></p>
+    <button class="menu-button" onclick="backToLobby()">Back</button>
+  </div>
+</div>
+
+
+  <script src="static/script.js"></script>
 </body>
 </html>
