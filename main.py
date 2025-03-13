@@ -147,6 +147,35 @@ def leaderboard():
     return render_template('leaderboard.html', leaderboard=leaderboard_data)
 
 
+@app.route('/game_over', methods=['GET', 'POST'])
+def game_over():
+    if request.method == 'POST':
+        # Получаем текущий стрик из запроса
+        current_streak = request.json.get('current_streak', 0)
+        return jsonify({"status": "success"})
+
+    # GET-запрос: отображаем страницу с переданным score
+    score = request.args.get('score', 0)
+    return render_template('game_over.html', current_score=score)
+
+
+@app.route('/save_score', methods=['POST'])
+def save_score():
+    username = session.get('username')
+    if not username:
+        return jsonify({"error": "Not authorized"}), 401
+
+    user = User.query.filter_by(username=username).first()
+    data = request.json
+    current_score = data.get('current_streak', 0)
+
+    if current_score > user.best_score:
+        user.best_score = current_score
+        db.session.commit()
+
+    return jsonify({"status": "success"})
+
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()

@@ -69,7 +69,7 @@ function startGame() {
   updateScoreCounter();
   hideAllPages();
   document.getElementById('game').style.display = 'block';
-  document.getElementById('navbar').style.display = 'none'; // Скрываем navbar в игровом режиме
+  document.getElementById('navbar').style.display = 'none';
   fetchFlag();
 }
 
@@ -84,13 +84,26 @@ function showSettings() {
   }
   hideAllPages();
   document.getElementById('settings').style.display = 'block';
-  document.getElementById('navbar').style.display = 'none'; // Скрываем navbar на странице настроек
+  document.getElementById('navbar').style.display = 'none';
 }
 
 function backToLobby() {
-  hideAllPages();
-  document.getElementById('lobby').style.display = 'block';
-  document.getElementById('navbar').style.display = 'block';
+    const finalScore = currentStreak;
+    fetch('/game_over', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ current_streak: finalScore })
+    })
+    .then(response => response.json())
+    .then(data => {
+        window.location.href = `/game_over?score=${finalScore}`;
+    });
+}
+
+function backToMainMenu() {
+    hideAllPages();
+    document.getElementById('lobby').style.display = 'block';
+    document.getElementById('navbar').style.display = 'block';
 }
 
 function hideAllPages() {

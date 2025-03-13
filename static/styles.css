@@ -293,3 +293,33 @@ body {
     background-color: #a9a9a9;
     transform: scale(1.05);
 }
+
+/* Game Over Screen */
+.game-over-container {
+    text-align: center;
+    padding: 40px;
+    background: radial-gradient(circle, #fff0e0 0%, #ffe8d6 100%);
+    border: 2px solid #ffd4a3;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    margin: 20px auto;
+    max-width: 500px;
+}
+
+.score-text {
+    font-size: 1.5rem;
+    color: #d35400;
+    margin: 20px 0;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+/* Или для всех кнопок */
+.menu-button {
+    text-decoration: none !important;
+}
