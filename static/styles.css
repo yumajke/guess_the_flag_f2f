@@ -1,100 +1,31 @@
 /* Global Styles */
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #FFDAB9, #FFEBCD);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #FFDAB9, #FFEBCD);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 
 /* Lobby Styles */
 #lobby {
-  text-align: center;
-  padding: 40px;
-  background: radial-gradient(circle, #fff0e0 0%, #ffe8d6 100%);
-  border: 2px solid #ffd4a3;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  margin-bottom: 20px;
+    text-align: center;
+    padding: 40px;
+    background: radial-gradient(circle, #fff0e0 0%, #ffe8d6 100%);
+    border: 2px solid #ffd4a3;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    margin-bottom: 20px;
 }
 
 #lobby h1 {
-  font-size: 2.8rem;
-  color: #d35400;
-  margin-bottom: 20px;
+    font-size: 2.8rem;
+    color: #d35400;
+    margin-bottom: 20px;
 }
-
-/* Page Container for Settings & Leaderboard */
-.page-container {
-  text-align: center;
-  padding: 40px;
-  background: #f9f9f9;
-  border: 2px solid #ccc;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* Game Container Styles */
-.game-container {
-  max-width: 800px;
-  width: 90%;
-  margin: 20px auto;
-  padding: 20px;
-  background: #f9f9f9;
-  border: 2px solid #ccc;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  position: relative; /* для позиционирования счётчика внутри контейнера */
-}
-
-/* Options container: используем grid для 4 кнопок в одном ряду */
-.options {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
-  margin-top: 15px;
-}
-
-/* Option Button Styles */
-.option-button {
-  padding: 12px 18px;
-  font-size: 1.2rem;
-  background-color: #f0f0f0;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.1s;
-  text-align: center;
-}
-
-.option-button:hover {
-  background-color: #e0e0e0;
-  transform: scale(1.05);
-}
-
-/* Next Button Styles */
-#next-button {
-  display: block;
-  padding: 12px 24px;
-  font-size: 1.2rem;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  margin: 20px auto 0;
-  transition: background-color 0.3s;
-}
-
-#next-button:hover {
-  background-color: #0056b3;
-}
-
-/* Обновлённые стили для кнопок в персиковой гамме */
 
 /* Menu Button Styles (for Start, End, Back, Settings, Leaderboard) */
 .menu-button {
@@ -114,12 +45,60 @@ body {
     transform: scale(1.05);
 }
 
+/* Page Container for Settings & Leaderboard */
+.page-container {
+    text-align: center;
+    padding: 40px;
+    background: #f9f9f9;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Game Container Styles */
+.game-container {
+    max-width: 800px;
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Options container: используем grid для 4 кнопок в одном ряду */
+.options {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-top: 15px;
+}
+
+/* Option Button Styles */
+.option-button {
+    padding: 12px 18px;
+    font-size: 1.2rem;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    text-align: center;
+}
+
+.option-button:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.05);
+}
+
 /* Next Button Styles */
 #next-button {
     display: block;
     padding: 12px 24px;
     font-size: 1.2rem;
-    background-color: #FF7F50;  /* персиковый оттенок */
+    background-color: #FF7F50;
     color: white;
     border: none;
     border-radius: 8px;
@@ -137,7 +116,7 @@ body {
     position: fixed;
     left: 20px;
     bottom: 20px;
-    background-color: #FF7F50;  /* персиковый оттенок */
+    background-color: #FF7F50;
     color: white;
     padding: 12px 24px;
     font-size: 1.2rem;
@@ -153,12 +132,12 @@ body {
     transform: scale(1.05);
 }
 
-/* Score Counter Styles - фиксированное позиционирование в правом нижнем углу */
+/* Score Counter Styles */
 #score-counter {
     position: fixed;
     right: 20px;
     bottom: 20px;
-    background: rgba(255, 127, 80, 0.8);  /* персиковый с прозрачностью */
+    background: rgba(255, 127, 80, 0.8);
     color: #fff;
     padding: 8px 12px;
     border-radius: 8px;
@@ -166,16 +145,151 @@ body {
     z-index: 1000;
 }
 
-
 /* Flag Image Styles */
 .flag-image {
-  width: 250px;
-  height: auto;
-  margin-bottom: 20px;
+    width: 250px;
+    height: auto;
+    margin-bottom: 20px;
 }
 
 /* Feedback Text Styles */
 .feedback-text {
+    font-size: 1.2rem;
+    margin: 20px 0;
+}
+
+/* Form Styles (Login/Register) */
+.form-container {
+    background: radial-gradient(circle, #fff0e0 0%, #ffe8d6 100%);
+    border: 2px solid #ffd4a3;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 40px;
+    text-align: center;
+    margin: 20px;
+    max-width: 400px;
+    width: 90%;
+}
+
+.form-container h2 {
+    font-size: 2rem;
+    color: #d35400;
+    margin-bottom: 20px;
+}
+
+.form-container input {
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 80%;
+    font-size: 1rem;
+}
+
+.form-container button {
+    margin-top: 15px;
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    background-color: #FF7F50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.form-container button:hover {
+    background-color: #FF6347;
+    transform: scale(1.05);
+}
+
+.leaderboard-container {
+  text-align: center;
+  background: radial-gradient(circle, #fff0e0 0%, #ffe8d6 100%);
+  border: 2px solid #ffd4a3;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 40px;
+  margin: 20px;
+  max-width: 600px;
+  width: 90%;
+}
+
+.leaderboard-container h2 {
+  font-size: 2rem;
+  color: #d35400;
+  margin-bottom: 20px;
+}
+
+.leaderboard-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.leaderboard-container li {
+  margin: 10px 0;
   font-size: 1.2rem;
-  margin: 20px 0;
+}
+
+.leaderboard-container a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  background-color: #FF7F50;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+.leaderboard-container a:hover {
+  background-color: #FF6347;
+  transform: scale(1.05);
+}
+
+/* Welcome text styling */
+.welcome-text {
+    font-size: 2.8rem;
+    color: #d35400;
+    margin: 0;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Новый стиль для контейнера с логином/регистрацией/выходом */
+.user-info-container {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+/* Стиль текста Logged in as ... */
+.user-info {
+    font-size: 0.9rem;
+    color: gray;
+    margin: 0;
+    padding: 5px;
+}
+
+/* Стили для кнопок входа/регистрации/выхода */
+.auth-button {
+    display: block;
+    padding: 6px 12px;
+    font-size: 1rem;
+    background-color: #d3d3d3;
+    color: black;
+    text-decoration: none;
+    border: none;
+    border-radius: 6px;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.auth-button:hover {
+    background-color: #a9a9a9;
+    transform: scale(1.05);
 }

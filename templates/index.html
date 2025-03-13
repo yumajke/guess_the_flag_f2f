@@ -5,14 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Guess the Flag</title>
   <link rel="stylesheet" href="static/styles.css" />
+  <script>
+    var isLoggedIn = {{ 'true' if username else 'false' }};
+  </script>
 </head>
 <body>
+  <div id="navbar">
+    <div class="user-info-container">
+      {% if username %}
+        <p class="user-info">Logged in as: {{ username }}</p>
+        <a href="{{ url_for('logout') }}" class="auth-button">Logout</a>
+      {% else %}
+        <a href="{{ url_for('login') }}" class="auth-button">Login</a>
+        <a href="{{ url_for('register') }}" class="auth-button">Register</a>
+      {% endif %}
+    </div>
+  </div>
+
   <!-- Lobby -->
   <div id="lobby">
     <h1>Welcome to "Guess the Flag"!</h1>
-    <button id="start-button" class="menu-button" onclick="startGame()">Start Game</button>
-    <button id="settings-button" class="menu-button" onclick="showSettings()">Settings</button>
-    <button id="leaderboard-button" class="menu-button" onclick="showLeaderboard()">Leaderboard</button>
+    <button id="start-button" type="button" class="menu-button" onclick="startGame()">Start Game</button>
+    <button id="settings-button" type="button" class="menu-button" onclick="showSettings()">Settings</button>
+    <button id="leaderboard-button" type="button" class="menu-button" onclick="window.location.href='{{ url_for('leaderboard') }}'">Leaderboard</button>
   </div>
 
   <!-- Game Session -->
@@ -22,39 +37,27 @@
       <img id="flag" src="" alt="Flag" class="flag-image" />
       <div id="feedback" class="feedback-text"></div>
       <div class="options">
-        <button class="option-button"></button>
-        <button class="option-button"></button>
-        <button class="option-button"></button>
-        <button class="option-button"></button>
+        <button class="option-button" type="button"></button>
+        <button class="option-button" type="button"></button>
+        <button class="option-button" type="button"></button>
+        <button class="option-button" type="button"></button>
       </div>
-      <button id="next-button" onclick="nextFlag()">Next</button>
-      <!-- Счётчик для правильной серии (Streak) -->
-      <div id="score-counter">Streak: 0</div>
+      <button id="next-button" type="button" onclick="nextFlag()">Next</button>
+      <!-- Фиксированное положение счетчика текущего стрика в правом нижнем углу -->
+      <div id="score-counter">Current streak: 0</div>
     </div>
-    <!-- End Game Button fixed at the bottom left corner -->
-    <button id="end-game-button" class="menu-button" onclick="endGame()">End Game</button>
+    <!-- Кнопка "Back to Lobby" теперь фиксирована в левом нижнем углу -->
+    <button id="end-game-button" type="button" class="menu-button" onclick="backToLobby()">Back to Lobby</button>
   </div>
 
-  <!-- Settings Page -->
+  <!-- Settings -->
   <div id="settings" style="display: none;">
     <div class="page-container">
       <h1>Game Settings</h1>
-      <!-- Здесь можно добавить настройки игры -->
-      <p>Something will eventually appear here soon...</p>
-      <button class="menu-button" onclick="backToLobby()">Back</button>
+      <p>Settings content goes here...</p>
+      <button type="button" class="menu-button" onclick="backToLobby()">Back to Lobby</button>
     </div>
   </div>
-
-  <!-- Leaderboard Page -->
-<div id="leaderboard" style="display: none;">
-  <div class="page-container">
-    <h1>Leaderboard</h1>
-    <!-- Элемент для отображения лучшего счёта -->
-    <p id="leaderboard-content"></p>
-    <button class="menu-button" onclick="backToLobby()">Back</button>
-  </div>
-</div>
-
 
   <script src="static/script.js"></script>
 </body>

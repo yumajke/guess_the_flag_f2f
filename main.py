@@ -1,9 +1,29 @@
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
+from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import generate_password_hash, check_password_hash
 import random
 
 app = Flask(__name__)
+app.secret_key = 'your_secret_key_here'  # Задайте секретный ключ
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///game.db'
+db = SQLAlchemy(app)
 
-# Sample data for flags and countries
+
+# Модель пользователя
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(150), unique=True, nullable=False)
+    password_hash = db.Column(db.String(256), nullable=False)
+    best_score = db.Column(db.Integer, default=0)
+
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+
+
+# Данные флагов
 flags = {
     "france.png": "France",
     "germany.png": "Germany",
@@ -42,11 +62,50 @@ flags = {
     "finland.png": "Finland",
 }
 
-# Route to serve the main HTML file
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        if User.query.filter_by(username=username).first():
+            return "User already exists."
+        user = User(username=username)
+        user.set_password(password)
+        db.session.add(user)
+        db.session.commit()
+        session['username'] = username
+        return redirect(url_for('index'))
+    return render_template('register.html')
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        user = User.query.filter_by(username=username).first()
+        if user and user.check_password(password):
+            session['username'] = username
+            return redirect(url_for('index'))
+        return "Invalid credentials."
+    return render_template('login.html')
+
+
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    return redirect(url_for('index'))
+
+
+# Главная страница
 @app.route('/')
 def index():
-    return render_template('index.html')  # Make sure 'index.html' is in the 'templates' folder
+    username = session.get('username')
+    return render_template('index.html', username=username)
 
+
+# Эндпоинт для получения флага
 @app.route('/get_flag', methods=['GET'])
 def get_flag():
     correct_flag, correct_country = random.choice(list(flags.items()))
@@ -60,13 +119,35 @@ def get_flag():
         "correct_answer": correct_country
     })
 
+
+# Проверка ответа
 @app.route('/check_answer', methods=['POST'])
 def check_answer():
     data = request.json
     if data['user_answer'] == data['correct_answer']:
+        # Если пользователь авторизован, обновляем лучший результат
+        username = session.get('username')
+        if username:
+            user = User.query.filter_by(username=username).first()
+            if user:
+                current_score = data.get('current_streak', 0)
+                if current_score > user.best_score:
+                    user.best_score = current_score
+                    db.session.commit()
         return jsonify({"result": "Correct!"})
     else:
         return jsonify({"result": "Try again!"})
 
+
+# Лидерборд: вывод топ-10 пользователей по лучшему результату
+@app.route('/leaderboard', methods=['GET'])
+def leaderboard():
+    users = User.query.order_by(User.best_score.desc()).limit(10).all()
+    leaderboard_data = [{"username": u.username, "best_score": u.best_score} for u in users]
+    return render_template('leaderboard.html', leaderboard=leaderboard_data)
+
+
 if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()  # Создаем таблицы внутри контекста приложения
     app.run(debug=True)
